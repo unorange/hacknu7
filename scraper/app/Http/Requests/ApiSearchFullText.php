@@ -22,7 +22,7 @@ class ApiSearchFullText extends FormRequest
     public function rules(): array
     {
         return [
-            'query' => 'required|string|array'
+            'query' => 'required|string'
         ];
     }
 }
