@@ -18,6 +18,4 @@ api.delete("/cards/:id", protect, (c) => card.deleteCard(c));
 
 api.post("/search", (c) => promo.searchFullText(c));
 
-// api.post("/search/bank", (c) => promo.searchBank(c));
-
 export default api;

@@ -23,22 +23,6 @@ export const searchFullText = async (c: Context) => {
   return c.json(body);
 };
 
-// export const searchBank = async (c: Context) => {
-//   const { query } = await c.req.json();
-
-//   const url = `${config.scraperURL}/api/db/bank/${query}?force=yes`;
-
-//   const response = await fetch(url, {
-//     method: "GET",
-//     headers,
-//   });
-
-//   const body = await response.json();
-
-//   return c.json(body);
-// };
-
 export default {
   searchFullText,
-  //   searchBank,
 };
