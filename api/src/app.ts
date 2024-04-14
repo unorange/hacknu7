@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { serve } from "@hono/node-server";
 import { logger } from "hono/logger";
 import { prettyJSON } from "hono/pretty-json";
 import { cors } from "hono/cors";
@@ -33,7 +34,7 @@ app.notFound((c) => {
   return error;
 });
 
-export default {
+serve({
   port: config.port,
   fetch: app.fetch,
-};
+});
