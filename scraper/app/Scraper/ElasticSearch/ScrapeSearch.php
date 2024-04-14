@@ -85,7 +85,7 @@ class ScrapeSearch
      * @param string $textQuery
      * @return array{int, string[]}
      */
-    public function searchFullText(string $textQuery, ?string $bank = null, ?string $category = null)
+    public function searchFullText(string $textQuery, null|array|string $bank = null, ?string $category = null)
     {
         $json = ['query' => [
             "bool" => [
@@ -105,14 +105,12 @@ class ScrapeSearch
         ];
 
         if($bank) {
+            if(is_string($bank)) {
+                $bank = [$bank];
+            }
             $json['query']['bool']['must'][] = [
-                "match" => [
-                    "bank_type.bank" => [
-                        'query' => $bank,
-                        "operator" => "or",
-                        "fuzziness" => 1.0,
-                        "prefix_length" => 1
-                    ]
+                "terms" => [
+                    "bank_type.bank" => $bank
                 ]
             ];
         }
